@@ -1,0 +1,209 @@
+[
+  {
+    "longitude": "88.30859",
+    "latitude": "42.89789",
+    "name": "新疆维吾尔自治区",
+    "msg": []
+  },
+  {
+    "longitude": "84.111330",
+    "latitude": "32.472700",
+    "name": "西藏",
+    "msg": []
+  },
+  {
+    "longitude": "93.911130",
+    "latitude": "34.958000",
+    "name": "青海",
+    "msg": []
+  },
+  {
+    "longitude": "100.415040",
+    "latitude": "30.448670",
+    "name": "四川",
+    "msg": []
+  },
+  {
+    "longitude": "101.425780",
+    "latitude": "23.079730",
+    "name": "云南",
+    "msg": []
+  },
+  {
+    "longitude": "108.281250",
+    "latitude": "22.350080",
+    "name": "广西",
+    "msg": []
+  },
+  {
+    "longitude": "109.687500",
+    "latitude": "17.978730",
+    "name": "海南",
+    "msg": []
+  },
+  {
+    "longitude": "105.732420",
+    "latitude": "25.720740",
+    "name": "贵州",
+    "msg": []
+  },
+  {
+    "longitude": "95.097660",
+    "latitud": "40.111690",
+    "name": "甘肃",
+    "msg": []
+  },
+  {
+    "longitude": "111.796880",
+    "latitude": "22.187400",
+    "name": "广东",
+    "msg": []
+  },
+  {
+    "longitude": "117.597660",
+    "latitude": "24.367110",
+    "name": "福建",
+    "msg": []
+  },
+  {
+    "longitude": "107.138670",
+    "latitude": "31.128200",
+    "name": "重庆",
+    "msg": []
+  },
+  {
+    "longitude": "110.654300",
+    "latitude": "28.536270",
+    "name": "湖南",
+    "msg": []
+  },
+  {
+    "longitude": "115.048830",
+    "latitude": "26.115990",
+    "name": "江西",
+    "msg": []
+  },
+  {
+    "longitude": "111.093750",
+    "latitude": "31.653380",
+    "name": "湖北",
+    "msg": []
+  },
+  {
+    "longitude": "106.171880",
+    "latitude": "37.649030",
+    "name": "宁夏",
+    "msg": []
+  },
+  {
+    "longitude": "108.720700",
+    "latitude": "34.597040",
+    "name": "陕西",
+    "msg": []
+  },
+  {
+    "longitude": "112.587890",
+    "latitude": "39.164140",
+    "name": "山西",
+    "msg": []
+  },
+  {
+    "longitude": "112.851560",
+    "latitude": "34.452220",
+    "name": "河南",
+    "msg": []
+  },
+  {
+    "longitude": "116.806640",
+    "latitude": "32.990240",
+    "name": "安徽",
+    "msg": []
+  },
+  {
+    "longitude": "121.464840",
+    "latitude": "28.921630",
+    "name": "浙江",
+    "msg": []
+  },
+  {
+    "longitude": "114.697270",
+    "latitude": "37.160320",
+    "name": "河北",
+    "msg": []
+  },
+  {
+    "longitude": "117.509770",
+    "latitude": "37.230330",
+    "name": "山东",
+    "msg": []
+  },
+  {
+    "longitude": "119.179690",
+    "latitude": "33.724340",
+    "name": "江苏",
+    "msg": []
+  },
+  {
+    "longitude": "123.046880",
+    "latitude": "30.902220",
+    "name": "上海市",
+    "msg": []
+  },
+  {
+    "longitude": "117.773440",
+    "latitude": "45.213000",
+    "name": "内蒙古",
+    "msg": []
+  },
+  {
+    "longitude": "116.279300",
+    "latitude": "41.640080",
+    "name": "北京市",
+    "msg": [
+      { "pName": "张文增", "school": "清华大学" },
+      { "pName": "张三", "school": "北京大学" }
+    ]
+  },
+  {
+    "longitude": "119.091800",
+    "latitude": "38.754080",
+    "name": "天津市",
+    "msg": []
+  },
+  {
+    "longitude": "123.134770",
+    "latitude": "40.446950",
+    "name": "辽宁",
+    "msg": []
+  },
+  {
+    "longitude": "124.804690",
+    "latitude": "43.707590",
+    "name": "吉林",
+    "msg": []
+  },
+  {
+    "longitude": "126.474610",
+    "latitude": "48.458350",
+    "name": "黑龙江",
+    "msg": []
+  },
+  {
+    "longitude": "121.464840",
+    "latitude": "24.447150",
+    "name": "台湾",
+    "msg": []
+  },
+  {
+    "longitude": "112.675780",
+    "latitude": "21.698270",
+    "name": "澳门",
+    "msg": []
+  },
+  {
+    "longitude": "114.785160",
+    "latitude": "21.943050",
+    "name": "香港",
+    "msg": []
+  }
+]

@@ -1,0 +1,82 @@
+.dialog {
+	display:none;
+	padding:30px 30px 15px 15px;
+}
+.dialog .tr { line-height: 30px; color: #666; }
+.dialog .col-xs-2.tr {
+    padding-left: 0;
+}
+.code{
+	float: right;
+	width: 80px;
+	background: yellow;
+	height: 30px;
+	margin-left: 15px;
+}
+.submit{
+	width: 200px;
+	margin: 0 auto;
+}
+.submitbtn{
+	background: #fe7701;
+	border-radius: 3px;
+	border: none;
+}
+.login-msg {
+    width: 130px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.layui-layer-title{
+	color: #FFF !important;
+	font-size: 16px !important;
+	height: 30px !important;
+	background: url(../img/dialog-top.png) center no-repeat !important;
+	background-color: transparent !important;
+	line-height: 28px !important;
+	padding: 0 !important;
+	text-align: center;
+	font-weight: bold;
+}
+.layui-layer-page .layui-layer-content{
+	background-color: #fff !important;
+}
+.layui-layer{
+	background-color: transparent !important;
+	box-shadow: none !important;
+	border-bottom: 3px solid #00a8f0;
+}
+.layui-layer-setwin {
+    bottom: -45px !important;
+    top: auto !important;
+    right: auto !important;
+    left: 50%;
+    margin-left: -13px;
+}
+.layui-layer-ico {
+    background: url(img/close.png) no-repeat !important;
+    width: 36px !important;
+    height: 36px !important;
+    margin-left: 0 !important;
+}
+.dialog .form-group{
+	position: relative;
+}
+.login-msg a{
+	text-decoration: underline;
+}
+.login-msg a:hover{
+	color: #fe7701;
+}
+.layui-layer-page .layui-layer-btn{
+	background: #fff;
+}
+.layui-layer-btn .layui-layer-btn0{
+	line-height: 24px;
+	background: #fe7701 !important;
+	color: #fff;
+	border-color: #fe7701 !important;
+}
+.layui-layer-btn .layui-layer-btn1{
+	line-height: 24px;
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "latitude": "35.86166",
+    "longitude": "104.195397",
+    "name": "中国",
+    "pName": "1111",
+    "Status": 1
+  },
+  {
+    "latitude": "56.130366",
+    "longitude": "-106.346771",
+    "name": "加拿大",
+    "pName": "2222",
+    "Status": 1
+  },
+  {
+    "latitude": "36.204824",
+    "longitude": "138.252924",
+    "name": "日本",
+    "pName": "3333",
+    "Status": 0
+  },
+  {
+    "latitude": "46.227638",
+    "longitude": "2.213749",
+    "name": "法国",
+    "pName": "第五个点",
+    "Status": 1
+  },
+  {
+    "latitude": 35.907757,
+    "longitude": 127.766922,
+    "name": "韩国",
+    "pName": "第五个点",
+    "Status": 1
+  },
+  {
+    "latitude": "37.09024",
+    "longitude": "-95.712891",
+    "name": "美国",
+    "pName": "7777",
+    "Status": 1
+  },
+  {
+    "latitude": "46.818188",
+    "longitude": "8.227512",
+    "name": "瑞士",
+    "pName": "8888",
+    "Status": 1
+  },
+  {
+    "latitude": "51.165691",
+    "longitude": "10.451526",
+    "name": "德国",
+    "pName": "1111",
+    "Status": 1
+  }
+]

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chorme=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国地图</title>
+    <link rel="icon" type="image/x-icon" href="../../static/img/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../static/img/favicon.ico" />
+    <link rel="bookmark" type="image/x-icon" href="../../static/img/favicon.ico" />
+    <!-- Bootstrap 3.3.5 -->
+    <link href="../../static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- font-awesome-4.7.0 -->
+    <link href="../../static/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- base css -->
+    <link href="../../static/css/base.css" rel="stylesheet" type="text/css" />
+    <!-- layout css -->
+    <link href="../../static/css/layout.css" rel="stylesheet" type="text/css" />
+    <!-- custom css-->
+    <link href="../../static/css/style.css" rel="stylesheet" type="text/css" />
+    <!-- dialog.custom css-->
+    <link href="../../static/css/dialog/dialog.custom.css" rel="stylesheet" type="text/css" />
+    <link href="../../static/css/map.css" rel="stylesheet" type="text/css" />
+    <!-- 以下两个插件用于在IE8以及以下版本浏览器支持HTML5元素和媒体查询，如果不需要用可以移除 -->
+    <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="normal-wrapper">
+                <a href="javascript:;" class="logo">
+                    <img src="../../static/img/logo.png" />
+                </a>
+                <div class="user-info-menu">
+                    <a href="javascript:;" class="btn-login">登录</a>
+                    <em>|</em>
+                    <a href="javascript:;">注册</a>
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li>
+                            <a href="../worldMap/index.html">世界分布</a>
+                        </li>
+                        <li class="active">
+                            <a href="javascript:;">中国分布</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="layoutMain bg-in oh">
+            <div class="normal-wrapper pt15">
+                <div class="ChinaMap">
+                    <div class="map-box fl">
+                        <div class="map " id="mapDiv" style="height:700px;"></div>
+                    </div>
+                    <div class="section1 fr mt100">
+                        <div class="tit">中国高端人才专利量排名（前10）</div>
+                        <div class="con">
+                            <div class="chinaBar" id="chinaBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="footer">广州奥凯信息咨询有限公司©2018-2022版权所有</p>
+        </div>
+    </div>
+    <!-- 登录弹窗 -->
+    <div id="userLogin-dialog" class="dialog">
+        <div class="userform">
+            <form id="loginForm" method="POST">
+                <div class="row row-xs-margin">
+                    <div class="col-xs-3 tr">
+                        <span class="font-red">*</span>
+                        账号：
+                    </div>
+                    <div class="col-xs-9">
+                        <div class="form-group">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="spaceline15"></div>-->
+                <div class="row row-xs-margin">
+                    <div class="col-xs-3 tr">
+                        <span class="font-red">*</span>
+                        密码：
+                    </div>
+                    <div class="col-xs-9">
+                        <div class="form-group">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="spaceline15"></div>-->
+                <div class="row row-xs-margin">
+                    <div class="col-xs-3 tr">
+                        <span class="font-red">*</span>
+                        验证码：
+                    </div>
+                    <div class="col-xs-9">
+                        <div class="code"></div>
+                        <div class="form-group oh">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="submit">
+                    <button class="submitbtn btn btn-block btn-primary" type="submit">登　录</button>
+                </div>
+                <div class="login-msg mt10">
+                    <a class="fr font-blue btn-findPwd" href="javascript:;">忘记密码？ </a>
+                    <p class="oh">
+                        <a class="font-red ml5" href="javascript:;">注册</a>
+                    </p>
+                </div>
+                <div class="error font-red mt5 tc">登录失败</div>
+            </form>
+        </div>
+    </div>
+    <!-- /登录弹窗 -->
+    <!-- JQuery 1.11.3 -->
+    <script src="../../static/plugins/jquery/jquery-1.11.3.min.js"></script>
+    <!-- Bootstrap 3.3.5 1.11.3 -->
+    <script src="../../static/plugins/bootstrap/js/bootstrap.js"></script>
+    <!-- layer v2.1 -->
+    <script src="../../static/plugins/layer/layer.js"></script>
+    <!-- dialog全局配置 -->
+    <script src="../../static/plugins/layer/dialog.js"></script>
+    <!-- custom -->
+    <script src="../../static/js/normal.custom.js"></script>
+    <script type="text/javascript" src="https://api.tianditu.gov.cn/api?v=4.0&tk=d51f7b3a792cc7dd414b6ff5ab3b7a8d"></script>
+    <!-- echarts -->
+    <script type="text/javascript" src="../../static/plugins/echarts/echarts.js"></script>
+    <script>
+        //登录弹窗
+        $('.btn-login').on('click', function () {
+            layer.open({
+                type: 1,
+                title: '用户登录',
+                area: '460px',
+                shadeClose: true,
+                content: $('#userLogin-dialog')
+            });
+        });
+        // 天地图（中国地图）
+        $(function () {
+            var map;
+            var zoom = 4;
+            var administrative;
+            var lnglats = [
+                { "longitude": "88.30859", "latitude": "42.89789", "name": "新疆维吾尔自治区", "msg":[]},
+                { "longitude": "84.111330", "latitude": "32.472700", "name": "西藏", "msg": [] },
+                { "longitude": "93.911130", "latitude": "34.958000", "name": "青海", "msg": [] },
+                { "longitude": "100.415040", "latitude": "30.448670", "name": "四川", "msg": [] },
+                { "longitude": "101.425780", "latitude": "23.079730", "name": "云南", "msg": [] },
+                { "longitude": "108.281250", "latitude": "22.350080", "name": "广西", "msg": [] },
+                { "longitude": "109.687500", "latitude": "17.978730", "name": "海南", "msg": [] },
+                { "longitude": "105.732420", "latitude": "25.720740", "name": "贵州", "msg": []},
+                { "longitude": "95.097660", "latitud": "40.111690", "name": "甘肃", "msg": [] },
+                { "longitude": "111.796880", "latitude": "22.187400", "name": "广东", "msg": [] },
+                { "longitude": "117.597660", "latitude": "24.367110", "name": "福建", "msg": [] },
+                { "longitude": "107.138670", "latitude": "31.128200", "name": "重庆", "msg": [] },
+                { "longitude": "110.654300", "latitude": "28.536270", "name": "湖南", "msg": [] },
+                { "longitude": "115.048830", "latitude": "26.115990", "name": "江西", "msg": []},
+                { "longitude": "111.093750", "latitude": "31.653380", "name": "湖北", "msg": []},
+                { "longitude": "106.171880", "latitude": "37.649030", "name": "宁夏", "msg": [] },
+                { "longitude": "108.720700", "latitude": "34.597040", "name": "陕西", "msg": [] },
+                { "longitude": "112.587890", "latitude": "39.164140", "name": "山西", "msg": [] },
+                { "longitude": "112.851560", "latitude": "34.452220", "name": "河南", "msg": [] },
+                { "longitude": "116.806640", "latitude": "32.990240", "name": "安徽", "msg": [] },
+                { "longitude": "121.464840", "latitude": "28.921630", "name": "浙江", "msg": [] },
+                { "longitude": "114.697270", "latitude": "37.160320", "name": "河北", "msg": [] },
+                { "longitude": "117.509770", "latitude": "37.230330", "name": "山东", "msg": []},
+                { "longitude": "119.179690", "latitude": "33.724340", "name": "江苏", "msg": [] },
+                { "longitude": "123.046880", "latitude": "30.902220", "name": "上海市", "msg": [] },
+                { "longitude": "117.773440", "latitude": "45.213000", "name": "内蒙古", "msg": []},
+                { "longitude": "116.279300", "latitude": "41.640080", "name": "北京市", "msg": [{"pName":"张文增", "school":"清华大学" },{ "pName":"张三", "school": "北京大学"}]},
+                { "longitude": "119.091800", "latitude": "38.754080", "name": "天津市", "msg": [] },
+                { "longitude": "123.134770", "latitude": "40.446950", "name": "辽宁", "msg": [] },
+                { "longitude": "124.804690", "latitude": "43.707590", "name": "吉林", "msg": []},
+                { "longitude": "126.474610", "latitude": "48.458350", "name": "黑龙江", "msg": [] },
+                { "longitude": "121.464840", "latitude": "24.447150", "name": "台湾", "msg": [] },
+                { "longitude": "112.675780", "latitude": "21.698270", "name": "澳门", "msg": [] },
+                { "longitude": "114.785160", "latitude": "21.943050", "name": "香港", "msg": [] }
+            ];
+            function onLoad() {
+                //初始化地图对象
+                map = new T.Map("mapDiv");
+                //设置显示地图的中心点和级别
+                map.centerAndZoom(new T.LngLat(104.150390, 32.249970), zoom);
+                map.disableDrag();
+                map.disableScrollWheelZoom();
+                map.disableDoubleClickZoom();
+
+                //创建对象
+                administrative = new T.AdministrativeDivision();
+                var config = {
+                    needSubInfo: true,
+                    needPolygon: true,
+                    needPre: true,
+                    searchType: 1,
+                    searchWord: "中华人民共和国"
+                };
+                administrative.search(config, searchResult);
+                selfMarker(lnglats);
+                //marker(lnglats);
+                //label(lnglats);
+                // 设置地图显示范围，超出这个范围的禁止拖动
+                //var bounds = [65.03906,14.51978,165.05859,44.52784];
+                //map.setMaxBounds(new T.LngLatBounds(new T.LngLat(bounds[0], bounds[1]), new T.LngLat(bounds[2], bounds[3])));
+            };
+            onLoad();
+            // 自定义icon标注
+            function selfMarker(lnglats) {
+
+                //向地图上添加自定义标注
+                for (var i = 0; i < lnglats.length; i++) {
+                    //创建图片对象
+                    var icon = new T.Icon({
+                        iconUrl: "../../static/css/img/planceicon.png",
+                        iconSize: new T.Point(12, 18),
+                        iconAnchor: new T.Point(10, 25)
+                    });
+                    var marker = new T.Marker(new T.LngLat(lnglats[i].longitude, lnglats[i].latitude - 1), { icon: icon });
+                    map.addOverLay(marker);
+                    infoWin(lnglats[i].name, lnglats[i].msg, marker, icon);
+                }
+            }
+            // 标记点
+            function marker(lnglats) {
+                for (var i = 0; i < lnglats.length; i++) {
+                    //创建标注对象
+                    var marker = new T.Marker(new T.LngLat(lnglats[i].longitude, lnglats[i].latitude - 1));
+                    //向地图上添加标注
+                    map.addOverLay(marker);
+                    //设置标注透明度为0（与文字标注重叠）
+                    marker.setOpacity(0);
+                    //infoWin(lnglats[i].name,lnglats[i].pName,marker);
+                }
+            };
+            // 文字标注
+            function label(lnglats) {
+                var label;
+                for (var i = 0; i < lnglats.length; i++) {
+                    var latlng = new T.LngLat(lnglats[i].longitude - 2, lnglats[i].latitude);
+                    label = new T.Label({
+                        text: lnglats[i].pName,
+                        position: latlng,
+                        offset: new T.Point(-9, 0)
+                    });
+                    map.addOverLay(label);
+                    // 设置文字标注背景色、文字颜色、边框宽度
+                    label.setBackgroundColor('red');
+                    label.setFontColor('#fff');
+                    label.setBorderLine(0);
+                }
+            };
+            // 信息框事件(name 地名,pName 人名, school 学校, marker 标记点, icon 自定义的图片 可不传)
+            function infoWin(name, msg, marker, icon) {
+                var markerInfoWin = infoWinBox(name, msg);
+                // 给隐藏的标注添加事件
+                marker.addEventListener("mouseover", function () {
+                    this.openInfoWindow(markerInfoWin);
+                    if (icon) {
+                        icon.setIconUrl('../../static/css/img/planceiconMouse.png')
+                    }
+                });
+                marker.addEventListener("mouseout", function () {
+                    this.closeInfoWindow(markerInfoWin);
+                    if (icon) {
+                        icon.setIconUrl('../../static/css/img/planceicon.png')
+                    }
+                });
+            };
+            // 信息框
+            function infoWinBox(name, msg) {
+                // 创建信息框
+                var markerInfoWin = new T.InfoWindow();
+                var mcontent = "";
+                var sContent = "<div class='common-panel' style='width: auto'>" + name + "</div>";
+                for (var i = 0; i < msg.length; i++) {
+                    var onlyHtml = "<h3 class='common-panel-title'><span style='color:#ff7800;'>" + msg[i].pName + " </span><br>" + msg[i].school + "</h3>";
+                    mcontent += onlyHtml;
+                };
+                var sContent = "<div class='common-panel' style='width: auto'>" + mcontent + "" + name + "</div>";
+                markerInfoWin.setContent(sContent);
+                return markerInfoWin;
+            }
+            // 获取数据
+            function searchResult(result) {
+                if (result.getStatus() == 100) {
+                    var data = result.getData();
+                    showMsg(data, lnglats);
+                }
+                else {
+                    result.getMsg();
+                }
+            };
+            // 展示数据
+            function showMsg(data, lnglats) {
+                var pName;
+                for (var i = 0; i < lnglats.length; i++) {
+                    pName = lnglats[i].pName;
+                }
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].points) {
+                        //绘制行政区划
+                        polygon(data[i].points, data[i].name);
+                    }
+                    //解释下级行政区划
+                    if (data[i].child) {
+                        showMsg(data[i].child, lnglats);
+                        if (data[i].child.points) {
+                            //绘制行政区划
+                            polygon(data[i].child.points, data[i].child.name);
+                        }
+                    }
+                }
+            };
+            //生成随机正整数 1到n之间。
+            function getRandom(n) {
+                return Math.floor(Math.random() * n + 4)
+            }
+            // 绘制行政区划
+            function polygon(points, name) {
+                var pointsArr = [];
+                var opacity = getRandom(80) / 100;
+
+                //var color = ["#EEC591", "#EEAD0E", "#EE7600", "#F08080", "#EE6A50", "#DC143C"];
+                for (var i = 0; i < points.length; i++) {
+                    var regionLngLats = [];
+                    var regionArr = points[i].region.split(",");
+                    for (var m = 0; m < regionArr.length; m++) {
+                        var lnglatArr = regionArr[m].split(" ");
+                        var lnglat = new T.LngLat(lnglatArr[0], lnglatArr[1]);
+                        regionLngLats.push(lnglat);
+                        pointsArr.push(lnglat);
+                    }
+                    //var colorRandom = Math.floor(Math.random() * 6);
+                    //创建面对象
+                    var polygon = new T.Polygon(regionLngLats, { color: "#0035da", weight: 1, opacity: 1, fillColor: "#008cfe", fillOpacity: opacity });
+                    //向地图上添加行政区划面
+                    map.addOverLay(polygon);
+                    var markerInfoWin = new T.InfoWindow();
+                    var sContent = "<div class='common-panel clearfix' style='width: auto'><h3 class='common-panel-title'>" + name + "</h3> <div class='panel-1 '> <div><div class='panel-list'> <span class='list-title'>中学：</span><span class='list-intro' title=''>2222</span> </div></div></div></div>";
+                    markerInfoWin.setContent(sContent);
+                    polygon.addEventListener("mouseover", function (e) {
+                        //ajax(name)
+                        this.setStyle({
+                            dashArray: "0",
+                            weight: 2,
+                            color: "#0035da",
+                            opacity: 1
+                        });
+                        // 面悬浮信息框
+                        //polygon.openInfoWindow(markerInfoWin)
+                    });
+                    polygon.addEventListener("mouseout", function (e) {
+                        this.setStyle({
+                            dashArray: "0",
+                            weight: 1,
+                            color: "#0035da",
+                            opacity: 1
+                        });
+                    });
+                };
+                function ajax(name) {
+                    $.ajax({
+                        url: "",
+                        data: name,
+                        dataType: "json",
+                        contentType: "application/json",
+                        type: "POST",
+                        success: function (data) {
+
+                        }
+                    })
+                }
+                //显示最佳比例尺
+                //map.setViewport(pointsArr);
+            }
+        })
+
+        // 柱状图
+        require.config({ paths: { echarts: "../../static/plugins/echarts/" } });
+        require(
+            ['echarts',
+                'echarts/chart/bar'],
+            function (ec) {
+                // 图表渲染	
+                var barChart = ec.init(document.getElementById('chinaBar'));
+                var option = {
+                    color: ['#0091f8'],
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'shadow'
+                        }
+                    },
+                    grid: {
+                        x: 70,
+                        y: 5,
+                        x2: 0,
+                        y2: 5,
+                        borderWidth: '0px',//去图标边框
+                    },
+                    xAxis: [
+                        {
+                            type: 'value',
+                            splitLine: { show: false },//去除网格线
+                            axisLine: { show: false },//去除数轴
+                            boundaryGap: [0, 0.01]
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'category',
+                            splitLine: { show: false },//去除网格线
+                            axisLine: { show: false },//去除数轴
+                            borderWidth: '0px',//去图标边框
+                            axisLabel: {
+                                textStyle: {
+                                    color: '#00579a'
+                                },
+                            },
+                            axisTick: { // 隐藏小刻度
+                                show: false
+                            },
+                            data: ['张文增', '蔡敢为', '徐方', '王小春', '张林', '穆世友', '李建祥', '苏茂', '潘晨宇', '刘雄']
+                        }
+                    ],
+                    series: [
+                        {
+                            name: '2012年',
+                            type: 'bar',
+                            data: [107, 107, 125, 129, 136, 142, 145, 146, 159, 213],
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: true,
+                                        position: 'right',
+                                        formatter: '{c}',
+                                        textStyle: {
+                                            color: '#00579a',
+                                            fontSize: '12',
+                                            fontFamily: '微软雅黑'
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                };
+                barChart.setOption(option);
+
+                // echarts点击跳转
+                var ecConfig = require('echarts/config');
+                function eConsole(param) {
+                    window.location.href = '../expert/index.html';
+                }
+                barChart.on(ecConfig.EVENT.CLICK, eConsole);
+            })
+
+    </script>
+</body>
+
+</html>

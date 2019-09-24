@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge, chorme=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>世界地图</title>
+	<!-- dialog.custom css-->
+	<link href="../../static/css/dialog/dialog.custom.css" rel="stylesheet" type="text/css" />
+	<link href="../../static/css/map.css" rel="stylesheet" type="text/css" />
+	<!-- 以下两个插件用于在IE8以及以下版本浏览器支持HTML5元素和媒体查询，如果不需要用可以移除 -->
+	<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+	<div class="map" id="mapDiv" style="width:900px;"></div>
+	<!-- JQuery 1.11.3 -->
+	<script src="../../static/plugins/jquery/jquery-1.11.3.min.js"></script>
+	<!-- layer v2.1 -->
+	<script src="../../static/plugins/layer/layer.js"></script>
+	<script type="text/javascript" src="https://api.tianditu.gov.cn/api?v=4.0&tk=d51f7b3a792cc7dd414b6ff5ab3b7a8d"></script>
+	<script type="text/javascript" src="../../static/js/map.js"></script>
+	<script>
+		// 天地图（世界地图）
+		$(function () {
+			$.tiandiMap({
+				mapId: "mapDiv",
+				type: "world",
+				isMarker: true,
+				islabel: true
+			})
+		})
+	</script>
+</body>
+
+</html>
